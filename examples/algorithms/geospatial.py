@@ -1,5 +1,3 @@
-"""Dependency-free, synthetic geospatial planning examples."""
-
 from dataclasses import dataclass
 from math import asin, cos, radians, sin, sqrt
 from typing import Iterable
@@ -33,7 +31,7 @@ def _center(stops: list[Stop]) -> Stop:
 
 
 def allocate_by_capacity(stops: Iterable[Stop], capacity: float) -> list[list[Stop]]:
-    """Deterministic greedy allocation used only as a readable portfolio sample."""
+    """Allocate nearby stops without exceeding vehicle capacity."""
     if capacity <= 0:
         raise ValueError("capacity must be positive")
 

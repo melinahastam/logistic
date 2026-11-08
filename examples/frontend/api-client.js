@@ -1,5 +1,3 @@
-/** Synthetic same-origin API client; contains no production endpoints. */
-
 let csrfToken = null;
 
 export class ApiError extends Error {

@@ -1,5 +1,3 @@
-"""Synthetic SQL Server repository; table names are deliberately fictional."""
-
 from contextlib import contextmanager
 from datetime import date
 from typing import Iterator, Protocol

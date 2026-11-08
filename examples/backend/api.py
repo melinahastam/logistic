@@ -1,5 +1,3 @@
-"""Synthetic Flask API sample; not production source."""
-
 from dataclasses import asdict, dataclass
 from datetime import date
 from typing import Protocol
@@ -64,7 +62,7 @@ def create_demo_blueprint(repository: RouteWriter) -> Blueprint:
 
     @bp.post("")
     def save_route():
-        # In production, authenticated middleware resolves this tenant context.
+        # Authentication middleware resolves the tenant context.
         tenant_id = request.environ.get("demo.tenant_id")
         if not isinstance(tenant_id, int):
             return jsonify(error="authentication required"), 401

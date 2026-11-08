@@ -1,5 +1,3 @@
-/** Pure state model for a synthetic editable visit calendar. */
-
 const clone = (value) => structuredClone(value);
 
 function addDays(isoDate, days) {
@@ -14,7 +12,7 @@ function nextBusinessDate(isoDate, daysAfterVisit = 1) {
   while (remaining > 0) {
     result = addDays(result, 1);
     const weekday = new Date(`${result}T12:00:00Z`).getUTCDay();
-    if (weekday !== 5) remaining -= 1; // Friday excluded in this public sample.
+    if (weekday !== 5) remaining -= 1; // Friday is excluded.
   }
   return result;
 }

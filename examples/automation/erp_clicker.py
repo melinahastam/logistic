@@ -1,5 +1,3 @@
-"""Generic Selenium worker with placeholder selectors and no production details."""
-
 import os
 from dataclasses import dataclass
 from typing import Iterable
@@ -52,7 +50,7 @@ def submit_demo_tours(records: Iterable[TourRecord]) -> list[dict[str, str]]:
                     ec.visibility_of_element_located((By.CSS_SELECTOR, "[data-demo='success']"))
                 )
                 results.append({"external_id": record.external_id, "status": "submitted"})
-            except Exception as exc:  # Real adapters map known Selenium exceptions separately.
+            except Exception as exc:
                 results.append(
                     {
                         "external_id": record.external_id,
