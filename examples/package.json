@@ -1,0 +1,8 @@
+{
+  "name": "map8-public-engineering-samples",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  }
+}
