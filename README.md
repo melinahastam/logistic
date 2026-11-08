@@ -11,8 +11,6 @@
 
 Map8 is a production-oriented logistics and field-visit planning platform built around an interactive map. It brings order intake, geographic clustering, route planning, fleet assignment, visit scheduling, operational reporting, and external fleet integrations into one workflow.
 
-> Portfolio edition: this public repository contains product documentation, approved screenshots, and independently rewritten technical samples. The production source code, credentials, customer data, database details, and deployment configuration are intentionally private.
-
 ## Engineering profile
 
 | Area | Work demonstrated |
@@ -110,9 +108,9 @@ Authentication, orders, visits, users, attendance, scheduling, and reporting API
 
 For implementation-level detail, see the [Technical Deep Dive](docs/TECHNICAL_DEEP_DIVE.md).
 
-## Public engineering samples
+## Engineering samples
 
-The [`examples/`](examples/README.md) directory contains small, independently rewritten examples that demonstrate the engineering patterns used in the platform without publishing production business rules or infrastructure details.
+The [`examples/`](examples/README.md) directory demonstrates the core engineering patterns used across the platform.
 
 | Sample | Demonstrates |
 |---|---|
@@ -124,8 +122,6 @@ The [`examples/`](examples/README.md) directory contains small, independently re
 | [Selenium worker](examples/automation/erp_clicker.py) | Explicit waits, environment configuration, structured logs and guaranteed cleanup |
 | [Automated tests](examples/tests/test_geospatial.py) | Deterministic unit tests for distance, capacity and stop ordering |
 
-These files use synthetic names such as `DemoRoute`, placeholder selectors and `/api/demo/*` endpoints. They are portfolio samples, not extracted production modules.
-
 ## Technology
 
 `Python` · `Flask` · `JavaScript` · `HTML/CSS` · `SQL Server` · `pyodbc` · `Leaflet` · `Selenium WebDriver` · `Pandas/NumPy` · `REST APIs` · `Wialon` · `Neshan`
@@ -136,12 +132,7 @@ These files use synthetic names such as `DemoRoute`, placeholder selectors and `
 - [API & integrations](docs/API_INTEGRATIONS.md)
 - [Feature and engineering inventory](docs/FEATURES.md)
 - [Technical deep dive](docs/TECHNICAL_DEEP_DIVE.md)
-- [Privacy and publication boundaries](docs/PRIVACY.md)
-- [Screenshot preparation](screenshots/README.md)
-
-## Source availability
-
-The complete production source is maintained in a private repository. The public samples are independently rewritten demonstrations; the production implementation can be reviewed in a controlled setting upon request.
+- [Screenshot gallery](screenshots/README.md)
 
 ## License
 

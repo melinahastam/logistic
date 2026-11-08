@@ -139,7 +139,7 @@ The backend retrieves `https://www.time.ir/event-year`, decodes and normalizes h
 
 ### ERP and data warehouse
 
-ERP tour submission and data-warehouse imports are isolated behind server workflows. Provider hosts, accounts, database names, and customer-specific payloads are deliberately absent from this public repository.
+ERP tour submission and data-warehouse imports are isolated behind server workflows.
 
 ### Selenium ERP clicker
 
@@ -184,4 +184,4 @@ This is intentionally described as browser automationâ€”not a REST integrationâ€
 
 ## 10. Secondary capabilities
 
-File import/export, report generation, and print workflows are present, but they are supporting capabilities rather than the core engineering focus of this portfolio.
+File import/export, report generation, and print workflows are supporting capabilities rather than core planning workflows.

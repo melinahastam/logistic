@@ -84,11 +84,10 @@ sequenceDiagram
 - Browser integrations use restricted same-origin proxy endpoints.
 - Mutating requests use authenticated sessions and CSRF validation.
 - Database access is parameterized and tenant-scoped.
-- Sensitive infrastructure identifiers are excluded from this portfolio repository.
 
 ## Selenium automation boundary
 
-An ERP workflow without a suitable integration API was automated behind a backend endpoint using Selenium WebDriver. The worker consumes a validated temporary tour file, opens an authenticated browser session, waits explicitly for required controls, fills date and tour fields, submits the form, records item-level results, and closes the browser in a guaranteed cleanup path. Credentials and the private ERP address remain server-side and are not included in this repository.
+An ERP workflow without a suitable integration API was automated behind a backend endpoint using Selenium WebDriver. The worker consumes a validated temporary tour file, opens an authenticated browser session, waits explicitly for required controls, fills date and tour fields, submits the form, records item-level results, and closes the browser in a guaranteed cleanup path. Credentials and the ERP address are supplied through server environment configuration.
 
 ```mermaid
 sequenceDiagram

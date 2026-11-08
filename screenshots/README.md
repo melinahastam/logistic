@@ -1,8 +1,6 @@
 # Screenshot gallery
 
-The approved product screenshots are included with these stable names:
-
-> Public-safe copies: visible personnel/customer names and operational identifiers in screenshots 04, 05, and 07 have been replaced with synthetic sample data. The source screenshots remain outside this public portfolio.
+Product screenshots are included with these stable names:
 
 | File name | Content |
 |---|---|

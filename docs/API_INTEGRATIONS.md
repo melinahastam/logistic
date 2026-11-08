@@ -1,6 +1,6 @@
 # API & Integration Inventory
 
-This document describes the integration design without publishing credentials, private hosts, database names, or customer-specific payloads.
+This document describes the integration design and request flows.
 
 ## Request path
 
@@ -38,7 +38,7 @@ Provider keys and credentials are read from server environment variables. The br
 6. returns structured execution logs to the caller;
 7. quits the driver and removes the temporary file on success or failure.
 
-This automation was used where a stable provider API was not available. The private URL, deployment-specific selectors, and credentials are intentionally omitted.
+This automation was used where a stable provider API was not available.
 
 ## Authentication and user administration
 
@@ -109,11 +109,3 @@ The visit calendar is initially generated in the browser from workdays, line cyc
 | Attendance | `/get_driver_attendance`, `/driver/update_daily_shift`, `/assistant/update_shift` | Daily driver/assistant operations |
 | Scheduler | `/api/auto_assign_and_save_planning_orders`, `/api/trigger_scheduled_sync` | Controlled background workflows |
 | Cafe import/merge | `/api/cron/cafe_import`, `/api/cron/cafe_merge` | Protected scheduled ingestion and merge jobs |
-
-## Deliberately omitted
-
-- Provider tokens and account identifiers
-- Internal IP addresses, hosts, ports, and database names
-- Customer-specific schemas and example payload values
-- Production retry limits and operational thresholds that reveal internal policy
-- Any credential-bearing environment file

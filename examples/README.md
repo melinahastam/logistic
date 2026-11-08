@@ -1,6 +1,6 @@
-# Public engineering samples
+# Engineering samples
 
-These examples demonstrate the technical patterns behind Map8 without copying production source code. All routes, table names, selectors, credentials, payloads, thresholds and records are synthetic.
+These examples demonstrate the core technical patterns behind Map8.
 
 ## Included examples
 
@@ -10,7 +10,7 @@ These examples demonstrate the technical patterns behind Map8 without copying pr
 | `frontend/` | Resilient asynchronous requests and editable-calendar state |
 | `algorithms/` | Capacity-aware geographic allocation and route ordering |
 | `automation/` | Controlled Selenium browser automation |
-| `tests/` | Deterministic tests for the public algorithm sample |
+| `tests/` | Deterministic tests for algorithms and calendar state |
 
 ## Run the tests
 
@@ -21,12 +21,5 @@ python -m unittest discover -s examples/tests -v
 cd examples && npm test
 ```
 
-The integration-oriented examples are intentionally not connected to a real database or ERP. Their optional packages are listed in `requirements.txt`.
-
-## Publication boundary
-
-- No production module was copied into this directory.
-- No real hostname, IP address, database/table name, provider token or CSS selector is present.
-- No customer, employee, order or route record is present.
-- Security controls shown here are illustrative; private deployment controls remain private.
+Optional packages for the integration examples are listed in `requirements.txt`.
 
