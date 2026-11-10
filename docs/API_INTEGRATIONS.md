@@ -18,7 +18,7 @@ Browser module
 |---|---:|---|---|---|
 | `/tsp` | POST | `Neshan Trip API v3` | Coordinates and trip options | Stop sequencing and route geometry workflow |
 | `/neshan_logistics` | POST | `Neshan Logistics API v5` | Vehicle constraints and geographic jobs | Multi-vehicle job assignment and optimization |
-| `/api/wialon_proxy` | POST | `Wialon Remote API` | Allow-listed service name and sanitized parameters | Fleet units, orders, routes, and route updates |
+| `/api/wialon_proxy` | POST | `Wialon Remote API` | Allow-listed service name and validated parameters | Fleet units, orders, routes, and route updates |
 | `/api/wialon_client_config` | GET | Server-side Wialon configuration adapter | No provider token returned | Non-secret client integration settings |
 | `/api/iran_holidays` | GET | `https://www.time.ir/event-year` | Requested Jalali year | Official holiday normalization for workday calendars |
 | `/rahkaran/send_tours` | POST | Selenium WebDriver → private ERP workflow | Approved temporary tour file | Controlled form entry and item-level operation logs |

@@ -46,6 +46,3 @@ Thumbs.db
 # Local media drafts
 screenshots/raw/
 demo/raw/
-
-# Local pre-publication review (never committed)
-PUBLISHING_CHECKLIST.md
