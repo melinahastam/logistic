@@ -38,7 +38,7 @@ class SqlServerRouteRepository:
             )
             cursor.execute(
                 """
-                INSERT INTO dbo.DemoRoute (tenant_id, service_date, status)
+                INSERT INTO dbo.RoutePlan (tenant_id, service_date, status)
                 OUTPUT INSERTED.route_id
                 VALUES (?, ?, ?)
                 """,
@@ -70,7 +70,7 @@ class SqlServerRouteRepository:
             # Idempotent key: tenant + route + order. Replaying updates the same rows.
             cursor.execute(
                 """
-                MERGE dbo.DemoRouteStop WITH (HOLDLOCK) AS target
+                MERGE dbo.RouteStop WITH (HOLDLOCK) AS target
                 USING #RouteStopInput AS source
                    ON target.tenant_id = ?
                   AND target.route_id = ?

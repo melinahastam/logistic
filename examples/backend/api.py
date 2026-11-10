@@ -57,13 +57,13 @@ def _parse_plan(payload: object) -> tuple[date, list[StopInput]]:
     return service_date, stops
 
 
-def create_demo_blueprint(repository: RouteWriter) -> Blueprint:
-    bp = Blueprint("demo_routes", __name__, url_prefix="/api/demo/routes")
+def create_route_plans_blueprint(repository: RouteWriter) -> Blueprint:
+    bp = Blueprint("route_plans", __name__, url_prefix="/api/route-plans")
 
     @bp.post("")
     def save_route():
         # Authentication middleware resolves the tenant context.
-        tenant_id = request.environ.get("demo.tenant_id")
+        tenant_id = request.environ.get("app.tenant_id")
         if not isinstance(tenant_id, int):
             return jsonify(error="authentication required"), 401
 

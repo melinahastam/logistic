@@ -10,7 +10,7 @@ export class ApiError extends Error {
 }
 
 async function loadCsrfToken(signal) {
-  const response = await fetch("/api/demo/csrf", {
+  const response = await fetch("/auth/csrf", {
     credentials: "same-origin",
     headers: { Accept: "application/json" },
     signal,
@@ -76,7 +76,7 @@ export async function fetchJson(path, options = {}) {
   }
 }
 
-export function saveDemoRoute(route) {
-  return fetchJson("/api/demo/routes", { method: "POST", body: route });
+export function saveRoutePlan(route) {
+  return fetchJson("/api/route-plans", { method: "POST", body: route });
 }
 

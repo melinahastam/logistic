@@ -12,4 +12,4 @@ Product screenshots are included with these stable names:
 | `06-visit-clustering.png` | Visit clusters and customer points on the map |
 | `07-editable-visit-calendar.png` | Multi-week editable visit calendar |
 
-The main English and Persian READMEs render these images directly as the product gallery.
+The main Persian README and `README.en.md` render the key screens with implementation context.

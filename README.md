@@ -1,139 +1,130 @@
-# Map8 — Logistics & Field Visit Planning Platform
+# Map8 — سامانه برنامه‌ریزی لجستیک و ویزیت میدانی
 
-[نسخه فارسی](README.fa.md)
+[English version](README.en.md)
 
 ![Python](https://img.shields.io/badge/Python-Backend-3776AB?logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-REST_API-000000?logo=flask&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Async_Modules-F7DF1E?logo=javascript&logoColor=111)
 ![SQL Server](https://img.shields.io/badge/SQL_Server-Transactional_Data-CC2927?logo=microsoftsqlserver&logoColor=white)
 ![Leaflet](https://img.shields.io/badge/Leaflet-Geospatial_UI-199900?logo=leaflet&logoColor=white)
-![Architecture](https://img.shields.io/badge/Architecture-Layered_%26_Modular-2563EB)
+![Selenium](https://img.shields.io/badge/Selenium-ERP_Automation-43B02A?logo=selenium&logoColor=white)
 
-Map8 is a production-oriented logistics and field-visit planning platform built around an interactive map. It brings order intake, geographic clustering, route planning, fleet assignment, visit scheduling, operational reporting, and external fleet integrations into one workflow.
+Map8 یک سامانه وب عملیاتی است که داده‌های سفارش و مشتری را به خوشه‌های جغرافیایی، مسیرهای اجرایی، تخصیص ناوگان و برنامه ویزیت قابل‌ویرایش تبدیل می‌کند.
 
-## Engineering profile
+**توسعه‌دهنده:** ملینا مغفرت
 
-| Area | Work demonstrated |
-|---|---|
-| Backend engineering | Flask blueprints, RESTful JSON endpoints, service/repository separation, validation, centralized error handling |
-| SQL Server | Parameterized queries, multi-step transactions, `MERGE` upserts, temporary staging tables, `fast_executemany`, tenant-scoped data access |
-| Asynchronous frontend | Modular JavaScript, `fetch`, `async/await`, `Promise.all`, `AbortController`, CSRF-aware request retries and UI state synchronization |
-| Algorithms | Capacity-constrained geographic clustering, Haversine distance, cluster refinement, nearest-neighbor stop ordering, workday scheduling |
-| Security | Session authentication, PBKDF2 password hashing, CSRF protection, RBAC, tenant isolation, login throttling and activity auditing |
-| Integrations | Neshan routing/logistics APIs, Wialon Remote API, public holiday data, ERP automation and internal data-warehouse adapters |
-| Browser automation | Selenium WebDriver for controlled ERP tour entry, explicit waits, form interaction, execution logs and temporary-file cleanup |
-| Reliability | Transaction boundaries, idempotent `MERGE` flows, provider timeouts, fallbacks, pagination, bulk processing and parity tests |
-| Architecture | Incremental migration from a large legacy application to frontend modules and backend route/service/repository layers |
+**نقش من در پروژه:** توسعه فول‌استک بخش‌های Backend، پایگاه داده SQL Server، رابط ماژولار JavaScript، نقشه Leaflet، الگوریتم‌های برنامه‌ریزی، اتصال سرویس‌های بیرونی و اتوماسیون ERP با Selenium.
 
-## Selected product screens
+## مسئله‌ای که سیستم حل می‌کند
 
-The screenshots below are intentionally limited to approved product views. Operational credentials and infrastructure details are not included.
-
-### Map-centered operations and domain navigation
-
-![Main map and administration navigation](screenshots/01-main-map-admin-menu.png)
-
-![Order operations navigation](screenshots/02-order-workflow-menu.png)
-
-![Field-visit workflow navigation](screenshots/03-visit-workflow-menu.png)
-
-### Fleet assignment and route management
-
-![Driver assignment on the operational map](screenshots/04-driver-assignment-map.png)
-
-![Route and order management table](screenshots/05-route-management.png)
-
-### Geospatial visit planning
-
-![Capacity-aware visit clustering](screenshots/06-visit-clustering.png)
-
-![Editable multi-week visit calendar](screenshots/07-editable-visit-calendar.png)
-
-See [the screenshot guide](screenshots/README.md) before adding public images.
-
-## Architecture at a glance
+دریافت سفارش، تخصیص راننده، برنامه‌ریزی مسیر، ویزیت مشتری، همگام‌سازی ناوگان و ثبت اطلاعات در ERP فرایندهای جدا از هم بودند. Map8 این مراحل را در یک جریان کاری نقشه‌محور به هم متصل می‌کند:
 
 ```mermaid
 flowchart LR
-    UI[Modular JavaScript UI\nLeaflet map + operational panels]
-    API[Flask API layer\nvalidation + auth + CSRF]
-    SVC[Service layer\nbusiness workflows + adapters]
-    REPO[Repository layer\nparameterized SQL access]
-    DB[(SQL Server\noperational + tenant data)]
-    NS[Neshan APIs\ntrip and logistics optimization]
-    WI[Wialon API\nfleet orders and routes]
-    ERP[ERP / sales workflow\ncontrolled automation]
-    HOL[Public holiday source]
+    A[سفارش‌ها و مشتریان] --> B[اعتبارسنجی و نرمال‌سازی]
+    B --> C[خوشه‌بندی جغرافیایی]
+    C --> D[تخصیص راننده و ویزیتور]
+    D --> E[مسیر و تقویم ویزیت]
+    E --> F[همگام‌سازی ناوگان و ERP]
+    F --> G[گزارش‌های عملیاتی]
+```
 
-    UI -->|same-origin JSON APIs| API
+## بخش‌هایی که من پیاده‌سازی کردم
+
+| حوزه | پیاده‌سازی انجام‌شده |
+|---|---|
+| Backend | Endpointهای دامنه‌محور Flask، اعتبارسنجی ورودی، پاسخ‌های JSON یکپارچه، تفکیک Route/Service/Repository و مدیریت خطا |
+| SQL Server | Query پارامتری، Transaction چندمرحله‌ای، Staging Table، `fast_executemany`، Upsert با `MERGE`، صفحه‌بندی و Tenant Scope |
+| Frontend | پنل‌های ماژولار JavaScript، جریان‌های `fetch` و `async/await`، Retry آگاه از CSRF، وضعیت Loading/Error و همگام‌سازی نقشه و جدول |
+| برنامه‌ریزی جغرافیایی | خوشه‌بندی ظرفیت‌محور، فاصله Haversine، اصلاح خوشه، انتقال مشتری و مرتب‌سازی توقف‌ها با Nearest Neighbor |
+| تقویم ویزیت | تولید تقویم چند‌هفته‌ای، اعمال تعطیلات، جابه‌جایی ویزیت، Undo/Cancel و محاسبه مجدد تاریخ‌های وابسته |
+| رابط نقشه | لایه‌های Leaflet برای سفارش، مشتری، خوشه، راننده، ویزیتور، مسیر و توقف‌های شماره‌گذاری‌شده |
+| Integration | اتصال سمت سرور به Neshan، Wialon، سرویس تعطیلات رسمی و جریان‌های Data Warehouse |
+| اتوماسیون ERP | Selenium WebDriver همراه Explicit Wait، تکمیل فرم، نتیجه اجرای هر مورد و پاک‌سازی تضمین‌شده منابع |
+| امنیت و پایداری | Session، PBKDF2، CSRF، RBAC، Tenant Isolation، Login Throttling، Activity Log، Timeout و Rollback |
+| معماری | استخراج مرحله‌ای ماژول‌های Frontend و لایه‌های Backend از برنامه بزرگ اولیه با حفظ رفتار عملیاتی |
+
+## شواهد محصول
+
+### تخصیص ناوگان و ساخت مسیر
+
+![تخصیص راننده و ساخت مسیر](screenshots/04-driver-assignment-map.png)
+
+در این بخش پنل تخصیص، وضعیت انتخاب‌ها، همگام‌سازی لیست و نقشه، گردش‌کار راننده/خودرو و آماده‌سازی مسیر را پیاده‌سازی کردم.
+
+### مدیریت مسیر و سفارش
+
+![مدیریت مسیر و سفارش](screenshots/05-route-management.png)
+
+این جریان شامل فیلتر و صفحه‌بندی سمت سرور، عملیات گروهی، ارتباط سفارش با مسیر و ذخیره تراکنشی اطلاعات است.
+
+### خوشه‌بندی ظرفیت‌محور ویزیت
+
+![خوشه‌بندی ظرفیت‌محور ویزیت](screenshots/06-visit-clustering.png)
+
+مشتریان با درنظرگرفتن موقعیت جغرافیایی و محدودیت ظرفیت گروه‌بندی می‌شوند؛ خوشه‌ها قابل اصلاح دستی‌اند و وضعیت آن‌ها با نقشه و پنل ویزیتور همگام می‌ماند.
+
+### تقویم ویزیت قابل‌ویرایش
+
+![تقویم ویزیت قابل‌ویرایش](screenshots/07-editable-visit-calendar.png)
+
+تقویم از روزهای کاری و چرخه‌های ویزیت ساخته می‌شود و از جابه‌جایی، Undo، Cancel و محاسبه مجدد تاریخ ویزیت و تحویل پشتیبانی می‌کند.
+
+## چالش‌های فنی و راه‌حل‌ها
+
+| چالش | راه‌حل پیاده‌سازی‌شده |
+|---|---|
+| ذخیره سازگار چند جدول مرتبط | Transaction صریح برای Route، Stop، Assignment و تاریخ‌ها |
+| حجم بالای داده‌های عملیاتی | فیلتر و Pagination در دیتابیس، Staging Table و درج Batch |
+| محافظت از اطلاعات سرویس‌ها | Adapterهای same-origin در Flask و نگهداری Credentialها در سرور |
+| ویرایش تقویم بدون از دست‌رفتن وضعیت | Snapshotهای قابل بازگشت و محاسبه قطعی تاریخ‌ها پس از هر جابه‌جایی |
+| نبود API پایدار برای ERP | Worker کنترل‌شده Selenium با Explicit Wait و نتیجه ساختاریافته برای هر رکورد |
+| نگهداری برنامه بزرگ اولیه | مهاجرت مرحله‌ای به معماری ماژولار همراه کنترل برابری رفتار |
+
+## معماری
+
+```mermaid
+flowchart LR
+    UI[رابط ماژولار JavaScript\nنقشه Leaflet و پنل‌ها]
+    API[Flask API\nاعتبارسنجی، احراز هویت و CSRF]
+    SVC[Service Layer\nمنطق دامنه و Adapterها]
+    REPO[Repository Layer\nSQL پارامتری]
+    DB[(SQL Server)]
+    EXT[Neshan · Wialon · ERP · Holidays]
+
+    UI -->|JSON| API
     API --> SVC
     SVC --> REPO
     REPO --> DB
-    SVC -->|server-side adapter| NS
-    SVC -->|session-aware proxy| WI
-    SVC -->|controlled export/automation| ERP
-    SVC -->|holiday normalization| HOL
+    SVC --> EXT
 ```
 
-The application was progressively decomposed from a large legacy implementation into frontend modules and backend route/service/repository layers while preserving operational behavior.
+## بخش‌های منتخب پیاده‌سازی
 
-## API and integration map
+پوشه [`examples/`](examples/README.md) یک جریان متصل از ثبت Route Plan تا ذخیره در SQL Server و پردازش تقویم و ERP را نمایش می‌دهد:
 
-The browser communicates only with same-origin Flask endpoints. Credentials for third-party systems stay on the server.
-
-| Application API | Method | Backend destination | Purpose |
-|---|---:|---|---|
-| `/tsp` | POST | Neshan Trip API v3 | Sequence a set of geographic stops |
-| `/neshan_logistics` | POST | Neshan Logistics API v5 | Optimize jobs across vehicles |
-| `/api/wialon_proxy` | POST | Wialon Remote API | Create/update fleet orders and routes through an allow-listed proxy |
-| `/api/iran_holidays` | GET | `time.ir/event-year` | Normalize official Iranian holidays for visit-calendar generation |
-| `/rahkaran/send_tours` | POST | Selenium WebDriver → private ERP form | Transfer approved tour data through controlled browser automation |
-| `/sale_request/send` | POST | Sales workflow adapter | Submit validated sales requests |
-| `/api/import_pending_requests_from_dw` | POST | Internal data warehouse adapter | Import and normalize pending operational requests |
-
-Authentication, orders, visits, users, attendance, scheduling, and reporting APIs are documented in [API & Integrations](docs/API_INTEGRATIONS.md).
-
-## Engineering work represented
-
-- Refactored a large operational application toward modular frontend and layered backend boundaries
-- Implemented capacity-aware clustering, geographic reassignment, and route ordering
-- Built map rendering for drivers, visitors, clusters, orders, and route stops
-- Designed transactional save flows for routes, tours, customers, and order assignments
-- Added editable visit-calendar state with drag-and-drop, undo, cancellation, and dependent-date recalculation
-- Added server-side integrations without exposing provider tokens to the browser
-- Implemented a Selenium-based ERP automation worker to authenticate, populate tour forms, submit records, and return item-level execution logs
-- Added tenant scoping, session authentication, CSRF validation, password hashing, and activity auditing
-- Implemented high-volume tables, server-backed filtering, pagination, bulk actions, virtualized operational state, and report workflows
-- Preserved legacy behavior during staged modular migration and parity verification
-
-For implementation-level detail, see the [Technical Deep Dive](docs/TECHNICAL_DEEP_DIVE.md).
-
-## Engineering samples
-
-The [`examples/`](examples/README.md) directory demonstrates the core engineering patterns used across the platform.
-
-| Sample | Demonstrates |
+| مؤلفه | رفتار فنی قابل بررسی |
 |---|---|
-| [Flask API](examples/backend/api.py) | Request validation, service boundaries, tenant context, JSON errors and status codes |
-| [SQL Server repository](examples/backend/sqlserver_repository.py) | Parameterized SQL, transaction scope, staging tables, `fast_executemany` and idempotent `MERGE` |
-| [Async API client](examples/frontend/api-client.js) | `fetch`, `async/await`, CSRF refresh, timeout, cancellation and normalized errors |
-| [Editable calendar state](examples/frontend/editable-calendar.js) | Immutable snapshots, move validation, undo and dependent-date recalculation |
-| [Geospatial planning](examples/algorithms/geospatial.py) | Haversine distance, capacity-aware allocation and nearest-neighbor ordering |
-| [Selenium worker](examples/automation/erp_clicker.py) | Explicit waits, environment configuration, structured logs and guaranteed cleanup |
-| [Automated tests](examples/tests/test_geospatial.py) | Deterministic unit tests for distance, capacity and stop ordering |
+| [Flask Route](examples/backend/api.py) | اعتبارسنجی، Tenant Context، مرز Repository و Status Code |
+| [SQL Server Repository](examples/backend/sqlserver_repository.py) | Transaction، Staging Table، Batch Insert و `MERGE` |
+| [Async API Client](examples/frontend/api-client.js) | CSRF Refresh، Timeout، Cancellation و خطاهای نرمال‌شده |
+| [Calendar State](examples/frontend/editable-calendar.js) | اعتبارسنجی جابه‌جایی، Snapshot، Undo و محاسبه تاریخ |
+| [Planning Algorithms](examples/algorithms/geospatial.py) | Haversine، تخصیص ظرفیت‌محور و ترتیب توقف‌ها |
+| [ERP Worker](examples/automation/erp_clicker.py) | Explicit Wait، ثبت گروهی، نتیجه هر مورد و Cleanup |
+| [Tests](examples/tests) | تست قطعی رفتار الگوریتم و تقویم |
 
-## Technology
+## مستندات فنی
 
-`Python` · `Flask` · `JavaScript` · `HTML/CSS` · `SQL Server` · `pyodbc` · `Leaflet` · `Selenium WebDriver` · `Pandas/NumPy` · `REST APIs` · `Wialon` · `Neshan`
+- [معماری](docs/ARCHITECTURE.md)
+- [نقشه API و Integrationها](docs/API_INTEGRATIONS.md)
+- [فهرست قابلیت‌ها](docs/FEATURES.md)
+- [شرح فنی پیاده‌سازی](docs/TECHNICAL_DEEP_DIVE.md)
+- [گالری تصاویر](screenshots/README.md)
 
-## Documentation
+## تکنولوژی‌ها
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [API & integrations](docs/API_INTEGRATIONS.md)
-- [Feature and engineering inventory](docs/FEATURES.md)
-- [Technical deep dive](docs/TECHNICAL_DEEP_DIVE.md)
-- [Screenshot gallery](screenshots/README.md)
+`Python` · `Flask` · `JavaScript` · `HTML/CSS` · `SQL Server` · `pyodbc` · `Leaflet` · `Selenium WebDriver` · `Pandas/NumPy` · `REST API` · `Wialon` · `Neshan`
 
-## License
+## مجوز
 
-This is a portfolio showcase, not an open-source distribution. See [LICENSE.md](LICENSE.md).
+شرایط استفاده در [LICENSE.md](LICENSE.md) آمده است.
