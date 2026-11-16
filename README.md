@@ -31,18 +31,26 @@ flowchart LR
 
 ## بخش‌هایی که من پیاده‌سازی کردم
 
-| حوزه | پیاده‌سازی انجام‌شده |
-|---|---|
-| Backend | Endpointهای دامنه‌محور Flask، اعتبارسنجی ورودی، پاسخ‌های JSON یکپارچه، تفکیک Route/Service/Repository و مدیریت خطا |
-| SQL Server | Query پارامتری، Transaction چندمرحله‌ای، Staging Table، `fast_executemany`، Upsert با `MERGE`، صفحه‌بندی و Tenant Scope |
-| Frontend | پنل‌های ماژولار JavaScript، جریان‌های `fetch` و `async/await`، Retry آگاه از CSRF، وضعیت Loading/Error و همگام‌سازی نقشه و جدول |
-| برنامه‌ریزی جغرافیایی | خوشه‌بندی ظرفیت‌محور، فاصله Haversine، اصلاح خوشه، انتقال مشتری و مرتب‌سازی توقف‌ها با Nearest Neighbor |
-| تقویم ویزیت | تولید تقویم چند‌هفته‌ای، اعمال تعطیلات، جابه‌جایی ویزیت، Undo/Cancel و محاسبه مجدد تاریخ‌های وابسته |
-| رابط نقشه | لایه‌های Leaflet برای سفارش، مشتری، خوشه، راننده، ویزیتور، مسیر و توقف‌های شماره‌گذاری‌شده |
-| Integration | اتصال سمت سرور به Neshan، Wialon، سرویس تعطیلات رسمی و جریان‌های Data Warehouse |
-| اتوماسیون ERP | Selenium WebDriver همراه Explicit Wait، تکمیل فرم، نتیجه اجرای هر مورد و پاک‌سازی تضمین‌شده منابع |
-| امنیت و پایداری | Session، PBKDF2، CSRF، RBAC، Tenant Isolation، Login Throttling، Activity Log، Timeout و Rollback |
-| معماری | استخراج مرحله‌ای ماژول‌های Frontend و لایه‌های Backend از برنامه بزرگ اولیه با حفظ رفتار عملیاتی |
+<table dir="rtl">
+  <thead>
+    <tr>
+      <th align="right" dir="rtl">حوزه</th>
+      <th align="right" dir="rtl">پیاده‌سازی انجام‌شده</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="right" dir="rtl">Backend</td><td align="right" dir="rtl">Endpointهای دامنه‌محور Flask، اعتبارسنجی ورودی، پاسخ‌های JSON یکپارچه، تفکیک Route / Service / Repository و مدیریت خطا</td></tr>
+    <tr><td align="right" dir="rtl">SQL Server</td><td align="right" dir="rtl">Query پارامتری، Transaction چندمرحله‌ای، Staging Table، <code>fast_executemany</code>، Upsert با <code>MERGE</code>، صفحه‌بندی و Tenant Scope</td></tr>
+    <tr><td align="right" dir="rtl">Frontend</td><td align="right" dir="rtl">پنل‌های ماژولار JavaScript، جریان‌های <code>fetch</code> و <code>async/await</code>، Retry آگاه از CSRF، وضعیت Loading / Error و همگام‌سازی نقشه و جدول</td></tr>
+    <tr><td align="right" dir="rtl">برنامه‌ریزی جغرافیایی</td><td align="right" dir="rtl">خوشه‌بندی ظرفیت‌محور، فاصله Haversine، اصلاح خوشه، انتقال مشتری و مرتب‌سازی توقف‌ها با Nearest Neighbor</td></tr>
+    <tr><td align="right" dir="rtl">تقویم ویزیت</td><td align="right" dir="rtl">تولید تقویم چند‌هفته‌ای، اعمال تعطیلات، جابه‌جایی ویزیت، Undo / Cancel و محاسبه مجدد تاریخ‌های وابسته</td></tr>
+    <tr><td align="right" dir="rtl">رابط نقشه</td><td align="right" dir="rtl">لایه‌های Leaflet برای سفارش، مشتری، خوشه، راننده، ویزیتور، مسیر و توقف‌های شماره‌گذاری‌شده</td></tr>
+    <tr><td align="right" dir="rtl">Integration</td><td align="right" dir="rtl">اتصال سمت سرور به Neshan، Wialon، سرویس تعطیلات رسمی و جریان‌های Data Warehouse</td></tr>
+    <tr><td align="right" dir="rtl">اتوماسیون ERP</td><td align="right" dir="rtl">Selenium WebDriver همراه Explicit Wait، تکمیل فرم، نتیجه اجرای هر مورد و پاک‌سازی تضمین‌شده منابع</td></tr>
+    <tr><td align="right" dir="rtl">امنیت و پایداری</td><td align="right" dir="rtl">Session، PBKDF2، CSRF، RBAC، Tenant Isolation، Login Throttling، Activity Log، Timeout و Rollback</td></tr>
+    <tr><td align="right" dir="rtl">معماری</td><td align="right" dir="rtl">استخراج مرحله‌ای ماژول‌های Frontend و لایه‌های Backend از برنامه بزرگ اولیه با حفظ رفتار عملیاتی</td></tr>
+  </tbody>
+</table>
 
 ## شواهد محصول
 
@@ -72,14 +80,22 @@ flowchart LR
 
 ## چالش‌های فنی و راه‌حل‌ها
 
-| چالش | راه‌حل پیاده‌سازی‌شده |
-|---|---|
-| ذخیره سازگار چند جدول مرتبط | Transaction صریح برای Route، Stop، Assignment و تاریخ‌ها |
-| حجم بالای داده‌های عملیاتی | فیلتر و Pagination در دیتابیس، Staging Table و درج Batch |
-| محافظت از اطلاعات سرویس‌ها | Adapterهای same-origin در Flask و نگهداری Credentialها در سرور |
-| ویرایش تقویم بدون از دست‌رفتن وضعیت | Snapshotهای قابل بازگشت و محاسبه قطعی تاریخ‌ها پس از هر جابه‌جایی |
-| نبود API پایدار برای ERP | Worker کنترل‌شده Selenium با Explicit Wait و نتیجه ساختاریافته برای هر رکورد |
-| نگهداری برنامه بزرگ اولیه | مهاجرت مرحله‌ای به معماری ماژولار همراه کنترل برابری رفتار |
+<table dir="rtl">
+  <thead>
+    <tr>
+      <th align="right" dir="rtl">چالش</th>
+      <th align="right" dir="rtl">راه‌حل پیاده‌سازی‌شده</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="right" dir="rtl">ذخیره سازگار چند جدول مرتبط</td><td align="right" dir="rtl">Transaction صریح برای Route، Stop، Assignment و تاریخ‌ها</td></tr>
+    <tr><td align="right" dir="rtl">حجم بالای داده‌های عملیاتی</td><td align="right" dir="rtl">فیلتر و Pagination در دیتابیس، Staging Table و درج Batch</td></tr>
+    <tr><td align="right" dir="rtl">محافظت از اطلاعات سرویس‌ها</td><td align="right" dir="rtl">Adapterهای same-origin در Flask و نگهداری Credentialها در سرور</td></tr>
+    <tr><td align="right" dir="rtl">ویرایش تقویم بدون از دست‌رفتن وضعیت</td><td align="right" dir="rtl">Snapshotهای قابل بازگشت و محاسبه قطعی تاریخ‌ها پس از هر جابه‌جایی</td></tr>
+    <tr><td align="right" dir="rtl">نبود API پایدار برای ERP</td><td align="right" dir="rtl">Worker کنترل‌شده Selenium با Explicit Wait و نتیجه ساختاریافته برای هر رکورد</td></tr>
+    <tr><td align="right" dir="rtl">نگهداری برنامه بزرگ اولیه</td><td align="right" dir="rtl">مهاجرت مرحله‌ای به معماری ماژولار همراه کنترل برابری رفتار</td></tr>
+  </tbody>
+</table>
 
 ## معماری
 
@@ -103,23 +119,33 @@ flowchart LR
 
 پوشه [`examples/`](examples/README.md) یک جریان متصل از ثبت Route Plan تا ذخیره در SQL Server و پردازش تقویم و ERP را نمایش می‌دهد:
 
-| مؤلفه | رفتار فنی قابل بررسی |
-|---|---|
-| [Flask Route](examples/backend/api.py) | اعتبارسنجی، Tenant Context، مرز Repository و Status Code |
-| [SQL Server Repository](examples/backend/sqlserver_repository.py) | Transaction، Staging Table، Batch Insert و `MERGE` |
-| [Async API Client](examples/frontend/api-client.js) | CSRF Refresh، Timeout، Cancellation و خطاهای نرمال‌شده |
-| [Calendar State](examples/frontend/editable-calendar.js) | اعتبارسنجی جابه‌جایی، Snapshot، Undo و محاسبه تاریخ |
-| [Planning Algorithms](examples/algorithms/geospatial.py) | Haversine، تخصیص ظرفیت‌محور و ترتیب توقف‌ها |
-| [ERP Worker](examples/automation/erp_clicker.py) | Explicit Wait، ثبت گروهی، نتیجه هر مورد و Cleanup |
-| [Tests](examples/tests) | تست قطعی رفتار الگوریتم و تقویم |
+<table dir="rtl">
+  <thead>
+    <tr>
+      <th align="right" dir="rtl">مؤلفه</th>
+      <th align="right" dir="rtl">رفتار فنی قابل بررسی</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="right" dir="rtl"><a href="examples/backend/api.py">Flask Route</a></td><td align="right" dir="rtl">اعتبارسنجی، Tenant Context، مرز Repository و Status Code</td></tr>
+    <tr><td align="right" dir="rtl"><a href="examples/backend/sqlserver_repository.py">SQL Server Repository</a></td><td align="right" dir="rtl">Transaction، Staging Table، Batch Insert و <code>MERGE</code></td></tr>
+    <tr><td align="right" dir="rtl"><a href="examples/frontend/api-client.js">Async API Client</a></td><td align="right" dir="rtl">CSRF Refresh، Timeout، Cancellation و خطاهای نرمال‌شده</td></tr>
+    <tr><td align="right" dir="rtl"><a href="examples/frontend/editable-calendar.js">Calendar State</a></td><td align="right" dir="rtl">اعتبارسنجی جابه‌جایی، Snapshot، Undo و محاسبه تاریخ</td></tr>
+    <tr><td align="right" dir="rtl"><a href="examples/algorithms/geospatial.py">Planning Algorithms</a></td><td align="right" dir="rtl">Haversine، تخصیص ظرفیت‌محور و ترتیب توقف‌ها</td></tr>
+    <tr><td align="right" dir="rtl"><a href="examples/automation/erp_clicker.py">ERP Worker</a></td><td align="right" dir="rtl">Explicit Wait، ثبت گروهی، نتیجه هر مورد و Cleanup</td></tr>
+    <tr><td align="right" dir="rtl"><a href="examples/tests">Tests</a></td><td align="right" dir="rtl">تست قطعی رفتار الگوریتم و تقویم</td></tr>
+  </tbody>
+</table>
 
 ## مستندات فنی
 
-- [معماری](docs/ARCHITECTURE.md)
-- [نقشه API و Integrationها](docs/API_INTEGRATIONS.md)
-- [فهرست قابلیت‌ها](docs/FEATURES.md)
-- [شرح فنی پیاده‌سازی](docs/TECHNICAL_DEEP_DIVE.md)
-- [گالری تصاویر](screenshots/README.md)
+<ul dir="rtl">
+  <li align="right"><a href="docs/ARCHITECTURE.md">معماری</a></li>
+  <li align="right"><a href="docs/API_INTEGRATIONS.md">نقشه API و Integrationها</a></li>
+  <li align="right"><a href="docs/FEATURES.md">فهرست قابلیت‌ها</a></li>
+  <li align="right"><a href="docs/TECHNICAL_DEEP_DIVE.md">شرح فنی پیاده‌سازی</a></li>
+  <li align="right"><a href="screenshots/README.md">گالری تصاویر</a></li>
+</ul>
 
 ## تکنولوژی‌ها
 
